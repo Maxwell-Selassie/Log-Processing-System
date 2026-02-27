@@ -1,0 +1,13 @@
+[project]
+name = "log-processing-system"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "alembic>=1.18.4",
+    "boto3>=1.42.58",
+    "pandas>=3.0.1",
+    "pyyaml>=6.0.3",
+    "sqlalchemy>=2.0.47",
+]
