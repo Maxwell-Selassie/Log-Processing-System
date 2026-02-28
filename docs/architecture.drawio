@@ -1,0 +1,107 @@
+<mxfile host="65bd71144e">
+    <diagram id="X9AgezLGYH2Hsq0_5b_g" name="Page-1">
+        <mxGraphModel dx="2060" dy="702" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="2" value="" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#232F3D;strokeColor=none;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;pointerEvents=1;shape=mxgraph.aws4.logs;" vertex="1" parent="1">
+                    <mxGeometry x="20" y="190" width="57" height="78" as="geometry"/>
+                </mxCell>
+                <mxCell id="3" value="" style="endArrow=classic;html=1;" edge="1" parent="1" source="2">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="130" y="250" as="sourcePoint"/>
+                        <mxPoint x="150" y="230" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="24" value="LOAD TO" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="3">
+                    <mxGeometry x="-0.0757" relative="1" as="geometry">
+                        <mxPoint as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="12" value="" style="edgeStyle=none;html=1;" edge="1" parent="1" source="5" target="7">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="16" value="READ FROM&amp;nbsp;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="12">
+                    <mxGeometry x="-0.0302" relative="1" as="geometry">
+                        <mxPoint as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="5" value="" style="sketch=0;points=[[0,0,0],[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0,0],[0,1,0],[0.25,1,0],[0.5,1,0],[0.75,1,0],[1,1,0],[0,0.25,0],[0,0.5,0],[0,0.75,0],[1,0.25,0],[1,0.5,0],[1,0.75,0]];outlineConnect=0;fontColor=#232F3E;fillColor=#7AA116;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.s3;" vertex="1" parent="1">
+                    <mxGeometry x="150" y="190" width="78" height="78" as="geometry"/>
+                </mxCell>
+                <mxCell id="7" value="PARSER" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="330" y="199" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="8" value="" style="endArrow=classic;html=1;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="450" y="228.5" as="sourcePoint"/>
+                        <mxPoint x="590" y="229" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="17" value="TRANSFROM LOGS&amp;nbsp;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="8">
+                    <mxGeometry x="-0.134" y="1" relative="1" as="geometry">
+                        <mxPoint x="2" y="2" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="9" value="AGGREGATION" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="590" y="199" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="10" value="" style="endArrow=classic;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.49;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="9" target="11">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="719.9999999999999" y="228.83999999999995" as="sourcePoint"/>
+                        <mxPoint x="780" y="228.5" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="19" value="LOAD TO DB" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="10">
+                    <mxGeometry x="-0.1045" y="1" relative="1" as="geometry">
+                        <mxPoint as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="11" value="" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/azure2/databases/Azure_Database_PostgreSQL_Server.svg;" vertex="1" parent="1">
+                    <mxGeometry x="790" y="197" width="48" height="64" as="geometry"/>
+                </mxCell>
+                <mxCell id="13" value="LOGGING AND OBSERVABILITY: RUN ID | SUCCESSFUL RUNS AND ERRORS LOGGED | AGGREGATION RESULTS LOGGED | ALL PIPELINE RESULTS LOGGED" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="-100" y="700" width="920" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="14" value="&lt;h1 style=&quot;margin-top: 0px;&quot;&gt;LOGS&lt;/h1&gt;&lt;div&gt;WE WRITE AN INGEST.PY FILE TO INGEST ALL THE LOGS FROM THE SERVER. WE CATER FOR:&lt;/div&gt;&lt;div&gt;RETRIES&lt;/div&gt;&lt;div&gt;NETWORK CONNECTIVITY ISSUES&lt;/div&gt;&lt;div&gt;SIMPLE VALIDATION FOR: EMPTY LOG FILE, INCORRECT LOG FORMAT - SO WE CAN SAFELY LOAD TO S3 - A STRUCTURALLY SOUND LOG FILE&lt;/div&gt;" style="text;html=1;whiteSpace=wrap;overflow=hidden;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="10" y="290" width="130" height="320" as="geometry"/>
+                </mxCell>
+                <mxCell id="20" value="" style="endArrow=classic;html=1;" edge="1" parent="1" target="2">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="-50" y="230" as="sourcePoint"/>
+                        <mxPoint x="20" y="220" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="23" value="INGEST" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="20">
+                    <mxGeometry x="-0.1251" y="1" relative="1" as="geometry">
+                        <mxPoint x="9" y="1" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="21" value="" style="image;html=1;image=img/lib/clip_art/computers/Server_128x128.png" vertex="1" parent="1">
+                    <mxGeometry x="-120" y="190" width="80" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="22" value="&lt;h1 style=&quot;margin-top: 0px;&quot;&gt;SERVER&lt;/h1&gt;&lt;div&gt;SOURCE OF DATA&lt;/div&gt;&lt;div&gt;THIS PIPELINE INGESTS SERVER LOGS FROM A SERVER.&lt;/div&gt;&lt;div&gt;POTENTIAL ISSUES:&lt;/div&gt;&lt;div&gt;NETWORK ISSUES&lt;/div&gt;&lt;div&gt;- INGESTING LOGS FROM A SERVER THROUGH A NETWORK&lt;/div&gt;&lt;div&gt;- SERVER MAY BE DOWN&lt;/div&gt;&lt;div&gt;- SERVER MAY PRODUCE INCORRECT LOGS&lt;/div&gt;" style="text;html=1;whiteSpace=wrap;overflow=hidden;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="-160" y="290" width="150" height="260" as="geometry"/>
+                </mxCell>
+                <mxCell id="25" value="&lt;h1 style=&quot;margin-top: 0px;&quot;&gt;S3 BUCKET&lt;/h1&gt;&lt;div&gt;WE LOAD RAW LOG FILE TO S3 - WE CREATE AN S3 BUCKET TO HOLD ALL LOG FILES PARTITIONED USING THE HIVE PARTITIONING FORMAT - STORE LOG FILES BY DAY (SCALE TO HOURLY STORAGE FOR LARGE AMOUNTS OF INCOMING LOGS PER HOUR)&lt;/div&gt;&lt;div&gt;- OUTCOME - AN S3 BUCKET WITH RAW LOG DATA PARTITIONED USING HIVE&lt;/div&gt;&lt;div&gt;WE INCLUDE S3 IN THIS PIPELINE BECAUSE WE NEED TO STORE RAW LOG FILES FOR PERSISTENCE AND HISTORICAL AUDITING&lt;/div&gt;" style="text;html=1;whiteSpace=wrap;overflow=hidden;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="151" y="290" width="150" height="370" as="geometry"/>
+                </mxCell>
+                <mxCell id="26" value="&lt;h1 style=&quot;margin-top: 0px;&quot;&gt;PARSER&lt;/h1&gt;&lt;div&gt;THIS IS WHERE THE MAGIC, ERRORS AND BUGS ALL LIVE - WE SEEK TO FLESH OUT A STRUCTURE OUT OF THE UNSTRUCTRED LOGS.&amp;nbsp;&lt;/div&gt;&lt;div&gt;- WE USE REGEX AND FILE MATCHING PATTERNS TO FLESH OUT INDIVIDUAL EVENTS&lt;/div&gt;&lt;div&gt;- LOGS THAT DO NOT FOLLOW REQUIRED STRUCTURED ARE ACTUALLY LOGGED AND SAVED. WE DON&#39;T DISCARD THEM BUT USE THE DEAD LETTER QUEUE APPROACH TO HANDLE THEM&lt;/div&gt;&lt;div&gt;- OUTCOME - A STRUCTURED DATASET WITH CLEARLY DEFINED ROWS AND COLUMNS&lt;/div&gt;" style="text;html=1;whiteSpace=wrap;overflow=hidden;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="341" y="290" width="169" height="360" as="geometry"/>
+                </mxCell>
+                <mxCell id="27" value="&lt;h1 style=&quot;margin-top: 0px;&quot;&gt;AGGREGATION&lt;/h1&gt;&lt;div&gt;WE APPLY AGGREGATIONS LIKE SUM, COUNT, AVERAGES TO OUR STRUCTURED DATASET.&amp;nbsp;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="text;html=1;whiteSpace=wrap;overflow=hidden;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="550" y="290" width="190" height="270" as="geometry"/>
+                </mxCell>
+                <mxCell id="28" value="&lt;h1 style=&quot;margin-top: 0px;&quot;&gt;DB - FINAL&lt;/h1&gt;&lt;div&gt;WE FINALLY LOAD THESE AGGREGATIONS&lt;/div&gt;&lt;div&gt;ALL SUCCESSFUL AGGREGATIONS ARE STORED&amp;nbsp;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;color: rgb(63, 63, 63); background-color: transparent;&quot;&gt;- REJECTED LOGS ARE ALSO SAVED AS A TABLE IN DATABASE&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;color: rgb(63, 63, 63); background-color: transparent;&quot;&gt;OUR METRICS TABLE CONTAINS: TIME WINDOWS, ENDPOINT, STATUS CODE CATEGORY, USER DEFINED AGGREGATIONS&lt;/span&gt;&lt;/div&gt;" style="text;html=1;whiteSpace=wrap;overflow=hidden;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="760" y="290" width="160" height="260" as="geometry"/>
+                </mxCell>
+                <mxCell id="30" value="" style="edgeStyle=none;html=1;" edge="1" parent="1" source="29" target="5">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="29" value="THE DATA ENGINEER STARTS HERE" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+                    <mxGeometry x="77" y="130" width="230" height="30" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
