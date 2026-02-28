@@ -1,0 +1,42 @@
+# Log processing pipeline configuration
+
+pipeline:
+  window_size_hours: 1 # tumbling window size
+  batch_date: "yesterday" # "yesterday" or specific YYYY-MM-DD
+
+s3:
+  bucket_name: "" # overridden by .env
+  log_prefix: "raw-logs"
+  partition_format: "year={year}/month={month}/day={day}"
+
+database:
+  metrics_table: "hourly_metrics"
+  rejected_table: "rejected_logs"
+
+log_format:
+  # Standard Apache/Nginx Combined Log Format
+  # Each named group becomes a DataFrame column
+  pattern: >-
+    ^(?P<ip>\S+)\s+-\s+-\s+
+    \[(?P<timestamp>[^\]]+)\]\s+
+    "(?P<method>\w+)\s+(?P<endpoint>\S+)\s+HTTP/[\d.]+"\s+
+    (?P<status>\d{3})\s+
+    (?P<bytes>\d+)\s+
+    (?P<response_time>[\d.]+)$
+
+aggregations:
+  - name: "request_count"
+    func: "count"
+    column: "endpoint"
+
+  - name: "error_rate"
+    func: "error_rate"
+    column: "status"
+
+  - name: "avg_response_ms"
+    func: "mean"
+    column: "response_time"
+
+  - name: "p95_response_ms"
+    func: "percentile_95"
+    column: "response_time"
