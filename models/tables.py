@@ -58,3 +58,23 @@ class RejectedLogs(Base):
     rejection_reason = Column(String(200), nullable=False)
     log_date = Column(String(10), nullable=False)
     rejected_at = Column(DateTime, default=datetime.now(timezone.utc))
+
+class TopIPs(Base):
+    """
+    Daily top IP addresses by request volume
+    Separate from hourly_metrics for access control reasons
+    """
+
+    __tablename__ = "top_ips"
+
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    ip = Column(String(45), nullable=False)
+    request_count = Column(Integer, nullable=False)
+    unique_endpoints = Column(Integer, nullable=False)
+    avg_response_ms = Column(Numeric(10, 2), nullable=False)
+    log_date = Column(String(10), nullable=False)
+    loaded_at = Column(DateTime, default=datetime.now(timezone.utc))
+
+    __table_args__ = (
+        Index("idx_top_ips_date", "log_date"),
+    )
