@@ -16,8 +16,8 @@ def get_engine():
     url = (
         f"postgresql+psycopg2://"
         f"{os.getenv('POSTGRES_USER')}:{os.getenv('POSTGRES_PASSWORD')}"
-        f"@{os.getenv('POSTGRES_HOST')}:{os.getenv('POSTGRES_POSRT')}"
-        f"/{os.getenv("POSTGRES_DB")}"
+        f"@{os.getenv('POSTGRES_HOST')}:{os.getenv('POSTGRES_PORT')}"
+        f"/{os.getenv('POSTGRES_DB')}"
     )
 
     return create_engine(url)
@@ -37,7 +37,7 @@ def upsert_metrics(df: pd.DataFrame, engine: Engine) -> int:
         logger.warning(f"Empty metrics DataFrame - nothing to upsert")
         return 0
     
-    upsert_sql = """"
+    upsert_sql = """
     INSERT INTO hourly_metrics (
     window_start, endpoint, status_category, request_count, error_rate,
     avg_response_ms, p95_response_ms, total_bytes, log_date, loaded_at
@@ -86,7 +86,7 @@ def insert_injected_logs(
     
     insert_sql = """
     INSERT INTO rejected_logs (
-        raw_line, rejected_reason, log_date, rejected_at
+        raw_line, rejection_reason, log_date, rejected_at
     )
     SELECT 
         :raw_line, :rejection_reason, :log_date, :rejected_at

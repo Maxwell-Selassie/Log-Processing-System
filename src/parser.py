@@ -164,26 +164,3 @@ def parse_logs(
     return parsed_df, rejected_df
 
 
-if __name__ == "__main__":
-    import logging
-    logging.basicConfig(level=logging.INFO)
-    from pathlib import Path
-    from datetime import date, timedelta
-
-    yesterday = str(date.today() - timedelta(days=1))
-    log_file = Path(f"data/logs/server_{yesterday}.log")
-
-    with open(log_file) as f:
-        lines = f.readlines()
-
-    parsed_df, rejected_df = parse_logs(lines, yesterday)
-
-    print(f"\nParsed shape: {parsed_df.shape}")
-    print(f"Columns: {list(parsed_df.columns)}")
-    print(f"\nFirst row:\n{parsed_df.iloc[0]}")
-    print(f"\nRejection reasons:\n"
-        f"{rejected_df['rejection_reason'].value_counts()}")
-    print(f"\nStatus categories:\n"
-        f"{parsed_df['status_category'].value_counts()}")
-    print(f"\nSample window_starts:\n"
-        f"{parsed_df['window_start'].unique()[:5]}")

@@ -189,31 +189,3 @@ def get_top_ips(parsed_df: pd.DataFrame, top_n: int = 10) -> pd.DataFrame:
 
     return top_ips
 
-
-if __name__ == '__main__':
-    import logging
-    logging.basicConfig(level=logging.INFO)
-    from pathlib import Path
-    from datetime import date, timezone, timedelta
-    import sys 
-
-    sys.path.insert(0, str(Path(__file__).parent.parent))
-    from src.parser import parse_logs
-
-    yesterday = str(date.today() - timedelta(days=1))
-    log_file = Path(f'data/logs/server_{yesterday}.log')
-
-    with open(log_file, "r")  as file:
-        lines = file.readlines()
-
-    parsed_df, _ = parse_logs(lines, yesterday)
-    metrics_df = aggregate(parsed_df, yesterday)
-    top_ips = get_top_ips(parsed_df)
-
-    print(f"\nMetrics shape: {metrics_df.shape}")
-    print(f"Columns: {list(metrics_df.columns)}")
-    print(f"Sample metrics: \n{metrics_df.head(5).to_string()}")
-    print(f'Top 5 IPs: \n{top_ips.head(5).to_string()}')
-    print(f"Endpoints tracked: {metrics_df['endpoint'].nunique()}")
-    print(f"Windows tracked: {metrics_df['window_start'].nunique()}")
-    print(f"Status categories: {metrics_df['status_category'].nunique()}")
