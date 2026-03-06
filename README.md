@@ -20,39 +20,9 @@ This pipeline solves three problems that did not exist in Projects 1 and 2:
 
 ## Architecture
 
-```
-[Web Server]
-     │ log agent pushes continuously
-     ▼
-S3 Raw Logs (Bronze Layer)
-raw-logs/year=/month=/day=/server.log
-     │
-     │ ← Data Engineer's pipeline starts here
-     ▼
-┌──────────────┐
-│   INGEST     │  Read raw log file from S3 for target date
-└──────┬───────┘
-       │ list of raw text lines
-       ▼
-┌──────────────┐     Failure Mode 1: pattern mismatch
-│   PARSE      │ ──────────────────────────────────────→ rejected_logs (PostgreSQL)
-│   (regex)    │     Failure Mode 2: invalid field value
-└──────┬───────┘
-       │ structured DataFrame (one row per valid log line)
-       ▼
-┌──────────────┐
-│  AGGREGATE   │  Group by window_start × endpoint × status_category
-└──────┬───────┘  Compute: request_count, error_rate, avg_response_ms, p95_response_ms
-       │
-       ├──────────────────────────────────────→ hourly_metrics (PostgreSQL)
-       │                                         upsert — idempotent reruns
-       └──────────────────────────────────────→ top_ips (PostgreSQL)
-                                                 delete-then-insert — snapshot semantics
 
-┌──────────────────────────────────────────────────────────────────┐
-│  LOGGING: run_id | stage | lines_parsed | rejection_rate | duration │
-└──────────────────────────────────────────────────────────────────┘
-```
+![architecture](docs/architecture.drawio.svg)
+
 
 **S3 Folder Structure:**
 ```
